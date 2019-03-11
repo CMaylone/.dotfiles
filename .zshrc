@@ -97,6 +97,11 @@ source $ZSH/oh-my-zsh.sh
 
 alias g="git"
 
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+
 # Alias hub to add GitHub sugar to git
 eval "$(hub alias -s)"
 
@@ -108,7 +113,6 @@ eval "$(hub alias -s)"
 # Add NVM to PATH for scripting
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add MySQL 5.7 to PATH
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
@@ -118,6 +122,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Add Metasploit to the path
 export PATH="/opt/metasploit-framework/bin:$PATH"
+
+# Add universial-ctags lib to path
+export PATH="/usr/local/opt/universal-ctags/bin:$PATH"
 
 # Enable FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
