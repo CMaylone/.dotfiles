@@ -103,7 +103,7 @@ git config --global alias.ci commit
 git config --global alias.st status
 
 # Alias hub to add GitHub sugar to git
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 # Openssl paths so mysqlconnector installs for Tracer
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -126,6 +126,14 @@ export PATH="/opt/metasploit-framework/bin:$PATH"
 # Add universial-ctags lib to path
 export PATH="/usr/local/opt/universal-ctags/bin:$PATH"
 
+# Postgres
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# Python hack on MacOS to prevent fork crashes
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
+
+export TWEDDLE_SSH_KEY_DIR=/Users/cmaylone/.ssh/tweddle
+
 # Enable FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -133,4 +141,8 @@ export PATH="/usr/local/opt/universal-ctags/bin:$PATH"
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$GEM_HOME/bin:$PATH"
 
