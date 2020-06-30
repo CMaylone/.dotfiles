@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -126,6 +126,9 @@ export PATH="/opt/metasploit-framework/bin:$PATH"
 # Add universial-ctags lib to path
 export PATH="/usr/local/opt/universal-ctags/bin:$PATH"
 
+# Add tfenv to path
+export PATH="$HOME/.tfenv/bin:$PATH"
+
 # Postgres
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
@@ -137,12 +140,50 @@ export TWEDDLE_SSH_KEY_DIR=/Users/cmaylone/.ssh/tweddle
 # Enable FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# pyenv config
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export TMPDIR="$HOME/.tmp"
+
 # pyenv virtualenv (with auto-activation)
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+export PIPENV_CACHE_DIR="$HOME/.pipenv-cache"
+export PIP_CACHE_DIR="$HOME/.pip-cache"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$GEM_HOME/bin:$PATH"
 
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+source /home/cmaylone/.gvm/scripts/gvm
+source ~/.tweddle-vpn
+
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/cmaylone/.sdkman"
+[[ -s "/home/cmaylone/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cmaylone/.sdkman/bin/sdkman-init.sh"
