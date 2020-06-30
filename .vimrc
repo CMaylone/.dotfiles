@@ -12,7 +12,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Tmux integration
 Plugin 'itchyny/lightline.vim'          " Light-weight (haha) power line
 Plugin 'junegunn/fzf.vim'               " Blazing fast searches
 Plugin 'mileszs/ack.vim'                " Search + Result list
-Plugin 'Valloric/YouCompleteMe'         " Autocomplete
+" Plugin 'Valloric/YouCompleteMe'         " Autocomplete
 Plugin 'tpope/vim-surround'             " Makes quoting and unquoting a breeze
 Plugin 'tpope/vim-fugitive'             " Killer git wrapper
 Plugin 'tpope/vim-sensible'             " Sensible defaults
@@ -24,7 +24,7 @@ Plugin 'scrooloose/nerdcommenter'       " Commenting
 Plugin 'godlygeek/tabular'              " Text alignment
 Plugin 'w0rp/ale'                       " Async Linting
 Plugin 'tpope/vim-vinegar'              " Browse directory
-Plugin 'ludovicchabant/vim-gutentags'   " Better tag handling
+" Plugin 'ludovicchabant/vim-gutentags'   " Better tag handling
 Plugin 'hashivim/vim-terraform'         " Terraform integration
 Plugin 'pangloss/vim-javascript'        " Indenting and syntax
 Plugin 'mxw/vim-jsx'                    " JSX syntax highlighting
