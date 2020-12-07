@@ -68,6 +68,9 @@ plugins=(git
 	tmux
 	z)
 
+# Ignore Insecure complention-depedent dirs. See: https://github.com/ohmyzsh/ohmyzsh/issues/6835#issuecomment-390216875
+ZSH_DISABLE_COMPFIX=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -141,18 +144,18 @@ export TWEDDLE_SSH_KEY_DIR=/Users/cmaylone/.ssh/tweddle
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pyenv config
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export TMPDIR="$HOME/.tmp"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#export TMPDIR="$HOME/.tmp"
 
 # pyenv virtualenv (with auto-activation)
-eval "$(pyenv init -)"
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+#eval "$(pyenv init -)"
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+#export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
-export PIPENV_CACHE_DIR="$HOME/.pipenv-cache"
-export PIP_CACHE_DIR="$HOME/.pip-cache"
+#export PIPENV_CACHE_DIR="$HOME/.pipenv-cache"
+#export PIP_CACHE_DIR="$HOME/.pip-cache"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -179,11 +182,4 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-source /home/cmaylone/.gvm/scripts/gvm
-source ~/.tweddle-vpn
-
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/cmaylone/.sdkman"
-[[ -s "/home/cmaylone/.sdkman/bin/sdkman-init.sh" ]] && source "/home/cmaylone/.sdkman/bin/sdkman-init.sh"
+#source ~/.tweddle-vpn
