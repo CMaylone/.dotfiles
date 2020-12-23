@@ -13,5 +13,11 @@ tmux-link-config:
 tmux-install-plugins:
 	@echo "Installing tmux plugisn"
 	~/.tmux/plugins/tpm/bin/install_plugins
+	
+git-setup-aliases:
+	git config --global alias.co checkout
+	git config --global alias.br branch
+	git config --global alias.ci commit
+	git config --global alias.st status
 
 tmux-setup-osx: tmux-install-osx mux-install-plugin-manager tmux-link-config tmux-install-plugins
