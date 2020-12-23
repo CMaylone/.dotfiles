@@ -19,5 +19,9 @@ git-setup-aliases:
 	git config --global alias.br branch
 	git config --global alias.ci commit
 	git config --global alias.st status
+	
+zsh-link-config:
+	@echo "Linking zshrc config to home directory"
+	ln -s $(shell pwd)/.zshrc ~
 
 tmux-setup-osx: tmux-install-osx mux-install-plugin-manager tmux-link-config tmux-install-plugins

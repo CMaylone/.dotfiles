@@ -73,8 +73,6 @@ add-zsh-hook chpwd load-nvmrc
 # Add my scripts folder to path
 export PATH="$HOME/bin:$PATH"
 
-eval "$(direnv hook zsh)"
-
 source /Users/cmaylone/.rvm/scripts/rvm
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
