@@ -37,43 +37,13 @@ alias g="git"
 alias gr='grep -i '
 alias get='curl -OL'
 
-# Add NVM to PATH for scripting
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Add tfenv to path
-export PATH="$HOME/.tfenv/bin:$PATH"
-
-# Python hack on MacOS to prevent fork crashes
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
-
-export TWEDDLE_SSH_KEY_DIR=/Users/cmaylone/.ssh/tweddle
-
 autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-#load-nvmrc
+# Homebrew location for M1 Mac
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Add my scripts folder to path
 export PATH="$HOME/bin:$PATH"
-
-source /Users/cmaylone/.rvm/scripts/rvm
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
